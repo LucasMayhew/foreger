@@ -12,6 +12,9 @@ namespace SpriteKind {
     export const fern = SpriteKind.create()
     export const tree = SpriteKind.create()
     export const good = SpriteKind.create()
+    export const seel = SpriteKind.create()
+    export const goud = SpriteKind.create()
+    export const Charcl = SpriteKind.create()
 }
 namespace myTiles {
     //% blockIdentity=images._tile
@@ -338,6 +341,8 @@ f f f f f f f f f f f f f f f f
 f f f f f f f f f f f f f f f f 
 `
 }
+/**
+ */
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     game.splash("roocks")
     myCounter = sevenseg.createCounter(SegmentStyle.Medium, SegmentScale.Half, 2)
@@ -345,6 +350,20 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     myCounter.setDigitColor(1)
     myCounter.x = mySprite.x
     myCounter.y = mySprite.y
+    pause(1000)
+    myCounter.setDigitColor(0)
+    game.splash("iron")
+    myCounter.count = iron
+    myCounter.x = mySprite.x
+    myCounter.y = mySprite.y
+    myCounter.setDigitColor(1)
+    pause(1000)
+    myCounter.setDigitColor(0)
+    game.splash("wood")
+    myCounter.count = tree1
+    myCounter.x = mySprite.x
+    myCounter.y = mySprite.y
+    myCounter.setDigitColor(1)
     pause(1000)
     myCounter.setDigitColor(0)
 })
@@ -398,30 +417,30 @@ f f f f f f f f f f f f f f f f
             if (can == true) {
                 otherSprite.setImage(img`
 . . . . . c c b b b . . . . . . 
-. . . . c b d d d d b . . . . . 
+. . . . c b 5 5 d d b . . . . . 
 . . . . c d d d d d d b b . . . 
-. . . . c d d d d d d d d b . . 
-. . . c b b d d d d d d d b . . 
+. . . . c d d d d d d 5 5 b . . 
+. . . c b b 5 5 d d d d d b . . 
 . . . c b b d d d d d d d b . . 
 . c c c c b b b b d d d b b b . 
-. c d d b c b b b b b b b b d b 
-c b b d d d b b b b b d d b d b 
-c c b b d d d d d d d b b b d c 
+. c d d b c b b b b b b b b 5 b 
+c b b 5 5 d b b b b b d d b d b 
+c c b b d d d d d d 5 5 b b d c 
 c b c c c b b b b b b b d d c c 
-c c b b c c c c b d d d b c c b 
+c c b b c c c c b 5 d d b c c b 
 . c c c c c c c c c c c b b b b 
 . . c c c c c b b b b b b b c . 
 . . . . . . c c b b b b c c . . 
 . . . . . . . . c c c c . . . . 
 f f f f f f f f f f f f f f f f 
-f 2 2 2 2 f f f f f f f f f f f 
+f 2 2 2 f f f f f f f f f f f f 
 f f f f f f f f f f f f f f f f 
 `)
                 pause(300)
                 if (can == true) {
                     otherSprite.destroy(effects.disintegrate, 500)
                     rock += Math.randomRange(1, 2)
-                    good_vill += 2
+                    iron += 2
                     info.changeScoreBy(2)
                 }
             }
@@ -643,15 +662,63 @@ controller.B.onEvent(ControllerButtonEvent.Released, function () {
 . . . b b b b b f f f f f f b b b . . . 
 . . b b b b b b f f f f f f b b b b . . 
 . b b b b b b b f f f f f f b b b b b . 
-`, SpriteKind.fern)
+`, SpriteKind.Player)
                     mySprite4.setPosition(mySprite.x, mySprite.y)
+                    pause(100)
+                    mySprite.setKind(SpriteKind.fern)
                 }
             }
         }
     }
 })
 function doSomething () {
-	
+    game.splash("steel = 2 cool + 2 iron  ", "cool = 2 wood ")
+    good_vill = game.askForNumber("steel =1 cool =2", 1)
+    if (good_vill == 1) {
+        if (rock > 9 && 0 == 0) {
+            mySprite5 = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . b . . . . . 
+. . . . . . . . . b d b . . . . 
+. . . . . . . . b d d d b . . . 
+. . . . . . . . . b d d d b . . 
+. . . . . . . . . . b d d d b . 
+. . . . . . . . . . . b d d d b 
+. . . . . . . . . . . . b d b . 
+. . . . . . . . . . . . . b . . 
+`, SpriteKind.seel)
+            mySprite5.setPosition(mySprite4.x, mySprite4.y)
+        }
+    } else if (good_vill == 2) {
+        if (tree1 > 1) {
+            mySprite5 = sprites.create(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . 4 4 . . . 
+. . . . . . . . . . 4 f f 4 . . 
+. . . . . . . . . 4 f f e f 4 . 
+. . . . . . . . 4 f f f f f 4 . 
+. . . . . . . . 4 f f f f f 4 . 
+. . . . . . . . 4 e f f f f 4 . 
+. . . . . . . . 4 f f f f f 4 . 
+. . . . . . . . 4 f f f f e 4 . 
+. . . . . . . . . 4 f f f 4 . . 
+. . . . . . . . . . 4 4 4 . . . 
+`, SpriteKind.Charcl)
+            mySprite5.setPosition(mySprite4.x, mySprite4.y)
+        }
+    }
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (dd == false) {
@@ -756,13 +823,17 @@ scene.onOverlapTile(SpriteKind.rook, myTiles.tile1, function (sprite, location) 
 sprites.onOverlap(SpriteKind.Player, SpriteKind.fern, function (sprite, otherSprite) {
     if (controller.A.isPressed()) {
         doSomething()
+        pause(5000)
     }
 })
 let level = 0
-let mySprite4: Sprite = null
-let tree1 = 0
+let mySprite2: Sprite = null
+let mySprite5: Sprite = null
 let good_vill = 0
+let mySprite4: Sprite = null
 let can = false
+let tree1 = 0
+let iron = 0
 let myCounter: DigitCounter = null
 let dd = false
 let mySprite3: Sprite = null
@@ -1019,49 +1090,6 @@ anim.addAnimationFrame(img`
 . . . . . . . . . . . . . . . . . 
 `)
 dd = true
-let mySprite2 = sprites.create(img`
-. . . . . c c b b b . . . . . . 
-. . . . c b d d d d b . . . . . 
-. . . . c d d d d d d b b . . . 
-. . . . c d d d d d d d d b . . 
-. . . c b b d d d d d d d b . . 
-. . . c b b d d d d d d d b . . 
-. c c c c b b b b d d d b b b . 
-. c d d b c b b b b b b b b d b 
-c b b d d d b b b b b d d b d b 
-c c b b d d d d d d d b b b d c 
-c b c c c b b b b b b b d d c c 
-c c b b c c c c b d d d b c c b 
-. c c c c c c c c c c c b b b b 
-. . c c c c c b b b b b b b c . 
-. . . . . . c c b b b b c c . . 
-. . . . . . . . c c c c . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`, SpriteKind.rook)
-mySprite2.setImage(img`
-. . . . . c c b b b . . . . . . 
-. . . . c b d d d d b . . . . . 
-. . . . c d d d d d d b b . . . 
-. . . . c d d d d d d d d b . . 
-. . . c b b d d d d d d d b . . 
-. . . c b b d d d d d d d b . . 
-. c c c c b b b b d d d b b b . 
-. c d d b c b b b b b b b b d b 
-c b b d d d b b b b b d d b d b 
-c c b b d d d d d d d b b b d c 
-c b c c c b b b b b b b d d c c 
-c c b b c c c c b d d d b c c b 
-. c c c c c c c c c c c b b b b 
-. . c c c c c b b b b b b b c . 
-. . . . . . c c b b b b c c . . 
-. . . . . . . . c c c c . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`)
-tiles.placeOnRandomTile(mySprite2, myTiles.tile1)
 game.onUpdateInterval(Math.randomRange(5000, 10000), function () {
     mySprite2 = sprites.create(img`
 . . . . . c c b b b . . . . . . 
